@@ -12,7 +12,9 @@ app.get('/', function (req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
-const upload = multer({destination: 'uploads/'});
+// use destination instead of dest for storing files temporay in memory.
+
+const upload = multer({dest: 'uploads/'});
 
 app.post('/api/fileanalyse', upload.single('upfile'), (req, res) => {
   if(!req.file){
